@@ -1,0 +1,32 @@
+Credit : https://www.000webhost.com/forum/t/advanced-php-autoloading-classes-and-namespaces/100482
+
+Lets start!
+
+Most of the developers who are working with OOP(Object Oriented Programming) tends to save each class definition in a separate file. In this case, developers face a big problem. They have to include lots of files at the beginning of the document like following.
+
+include('dog.php');
+include('cat.php');
+include('cow.php');
+include('goat.php');
+include('fox.php');
+The concept “Autoloading” comes to solve this problem.
+
+Autoloading Classes
+Mainly there are two ways to define a autoload function.
+
+spl_autoload_register function (Highly recommended)
+__autoload function
+Following code will register autoload function and will try to load class files.
+
+<?php
+
+spl_autoload_register(function($className) {
+	include_once $className . '.php';
+});
+
+$dog = new dog();
+$cat = new cat();
+
+// static_methods below
+echo cow::getToken();
+echo fox::$name;
